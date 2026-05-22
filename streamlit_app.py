@@ -1,3 +1,5 @@
+import datetime
 import streamlit as st
 
-st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
+d = st.date_input("When's your birthday", datetime.date(2019, 7, 6))
+st.write("Your birthday is:", d)
