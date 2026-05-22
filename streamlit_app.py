@@ -1,15 +1,29 @@
 import streamlit as st
+import random
 
-st.title("🎈 Reyga")
-function addTask() {
-    let input = document.getElementById('taskInput');
-    let taskText = input.value;
-    if (taskText === '') return;
-
-    let li = document.createElement('li');
-    li.innerHTML = `${taskText} <button onclick="this.parentElement.remove()">X</button>`;
+def main():
+    print("=== Welcome to the Number Guessing Game ===")
+    print("Saya memikirkan angka antara 1 sampai 100.")
     
-    document.getElementById('taskList').appendChild(li);
-    input.value = '';}
+    # Komputer memilih angka acak
+    angka_rahasia = random.randint(1, 100)
+    percobaan = 0
+    menang = False
 
+    while not menang:
+        try:
+            tebakan = int(input("\nMasukkan tebakanmu: "))
+            percobaan += 1
 
+            if tebakan < angka_rahasia:
+                print("Terlalu rendah! Coba lagi.")
+            elif tebakan > angka_rahasia:
+                print("Terlalu tinggi! Coba lagi.")
+            else:
+                print(f"SELAMAT! Kamu berhasil menebak angka {angka_rahasia} dalam {percobaan} percobaan.")
+                menang = True
+        except ValueError:
+            print("Tolong masukkan angka yang valid!")
+
+if __name__ == "__main__":
+    main()
